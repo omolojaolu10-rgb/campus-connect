@@ -1,0 +1,119 @@
+
+/* Student discovery section */
+.discover {
+  padding: 80px 8%;
+  background: #ffffff;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.section-heading h2 {
+  font-size: 36px;
+  color: #191936;
+  margin-bottom: 12px;
+}
+
+.section-heading > p:last-child {
+  color: #777;
+}
+
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.student-card {
+  padding: 30px 22px;
+  border: 1px solid #eee;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+  transition: 0.3s;
+}
+
+.student-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.profile-avatar {
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eeeaff;
+  color: #5145cd;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.student-card h3 {
+  color: #191936;
+  margin-bottom: 7px;
+}
+
+.department {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+.profile-details {
+  text-align: left;
+  margin-bottom: 22px;
+  font-size: 14px;
+}
+
+.profile-details strong {
+  display: block;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.profile-details p {
+  color: #777;
+  margin-bottom: 16px;
+}
+
+.connect-btn,
+.connected-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.connect-btn {
+  background: #5145cd;
+  color: white;
+}
+
+.connected-btn {
+  background: #e7f7ed;
+  color: #218348;
+}
+
+@media (max-width: 900px) {
+  .student-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .student-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .discover {
+    padding: 60px 5%;
+  }
+}
