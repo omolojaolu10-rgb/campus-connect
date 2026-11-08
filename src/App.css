@@ -1,4 +1,61 @@
 
+.navbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 8%;
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+}
+
+.brand {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.brand span {
+  color: var(--purple-600);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-links a.active {
+  color: var(--purple-600);
+  font-weight: 700;
+}
+
+.nav-links .btn-outline {
+  padding: 8px 16px;
+  border: 1px solid var(--purple-600);
+  border-radius: 8px;
+  color: var(--purple-600);
+}
+
+.menu-toggle {
+  display: none;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.site-footer {
+  padding: 20px 8%;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
 /* Student discovery section */
 .discover {
   padding: 80px 8%;
@@ -109,11 +166,42 @@
 }
 
 @media (max-width: 600px) {
+  .navbar {
+    padding: 12px 5%;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 5%;
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
   .student-grid {
     grid-template-columns: 1fr;
   }
 
   .discover {
     padding: 60px 5%;
+  }
+
+  .site-footer {
+    padding-right: 5%;
+    padding-left: 5%;
   }
 }

@@ -1,45 +1,23 @@
-import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import StudentList from './components/StudentList'
-import { sampleStudents } from './data/sampleStudents'
+import MainLayout from './layouts/MainLayout'
+import DiscoverPage from './pages/DiscoverPage'
+import LandingPage from './pages/LandingPage'
+import LoginPage from './pages/LoginPage'
+import NotFoundPage from './pages/NotFoundPage'
+import RegisterPage from './pages/RegisterPage'
 
 function App() {
-  const [students, setStudents] = useState(sampleStudents)
-
-  function handleToggleConnect(studentId) {
-    setStudents((previous) =>
-      previous.map((student) =>
-        student.id === studentId
-          ? { ...student, connected: !student.connected }
-          : student,
-      ),
-    )
-  }
-
   return (
-    <div className="app">
-      <Navbar />
-      <main>
-        <Hero />
-
-        <section className="discover" id="discover">
-          <div className="section-heading">
-            <p className="tagline">MAKE NEW CONNECTIONS</p>
-            <h2>Discover Students</h2>
-            <p>
-              Find people who share your courses, interests and academic goals.
-            </p>
-          </div>
-
-          <StudentList
-            students={students}
-            onToggleConnect={handleToggleConnect}
-          />
-        </section>
-      </main>
-    </div>
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route index element={<LandingPage />} />
+        <Route path="discover" element={<DiscoverPage />} />
+        <Route path="register" element={<RegisterPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   )
 }
 
