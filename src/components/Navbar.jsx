@@ -1,11 +1,20 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import useAuth from '../hooks/useAuth'
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { user, logout } = useAuth()
+  const navigate = useNavigate()
 
   function closeMenu() {
     setIsMenuOpen(false)
+  }
+
+  function handleLogout() {
+    logout()
+    closeMenu()
+    navigate('/')
   }
 
   return (
@@ -35,9 +44,33 @@ function Navbar() {
         <NavLink to="/discover" onClick={closeMenu}>
           Discover
         </NavLink>
-        <NavLink to="/login" className="btn btn-outline" onClick={closeMenu}>
-          Login
-        </NavLink>
+        {user ? (
+          <>
+            <span className="nav-user-name">
+              {user.name.split(' ')[0]}
+            </span>
+            <button
+              type="button"
+              className="btn btn-outline"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <NavLink
+              to="/login"
+              className="btn btn-outline"
+              onClick={closeMenu}
+            >
+              Login
+            </NavLink>
+            <NavLink to="/register" onClick={closeMenu}>
+              Register
+            </NavLink>
+          </>
+        )}
       </div>
     </nav>
   )
