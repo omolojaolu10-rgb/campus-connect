@@ -52,6 +52,21 @@ export function validateLevel(value) {
   return ''
 }
 
+export function validateBio(value) {
+  if (value.length > 300) return 'Bio must be 300 characters or fewer.'
+  return ''
+}
+
+export function validateTags(tags, { min, max }) {
+  if (tags.length < min) {
+    return `Add at least ${min} ${min === 1 ? 'tag' : 'tags'}.`
+  }
+  if (tags.length > max) {
+    return `Use no more than ${max} tags.`
+  }
+  return ''
+}
+
 export function validatePassword(value) {
   if (!value) return 'Password is required.'
   if (value.length < 8) return 'Password must be at least 8 characters.'

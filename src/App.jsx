@@ -6,6 +6,7 @@ import DiscoverPage from './pages/DiscoverPage'
 import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
 import NotFoundPage from './pages/NotFoundPage'
+import ProfilePage from './pages/ProfilePage'
 import RegisterPage from './pages/RegisterPage'
 
 function App() {
@@ -18,6 +19,14 @@ function App() {
           element={
             <ProtectedRoute>
               <DiscoverPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
             </ProtectedRoute>
           }
         />

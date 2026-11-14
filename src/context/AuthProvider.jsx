@@ -7,11 +7,35 @@ function AuthProvider({ children }) {
 
   async function login(email, password) {
     const authenticatedUser = await mockLogin(email, password)
-    setUser(authenticatedUser)
+    setUser({
+      ...authenticatedUser,
+      profile: {
+        bio: '',
+        department: '',
+        level: '',
+        courses: [],
+        skills: [],
+        interests: [],
+      },
+    })
   }
 
   function logout() {
     setUser(null)
+  }
+
+  function updateProfile(newProfile) {
+    setUser((previous) =>
+      previous
+        ? {
+            ...previous,
+            profile: {
+              ...previous.profile,
+              ...newProfile,
+            },
+          }
+        : previous,
+    )
   }
 
   const value = {
@@ -19,6 +43,7 @@ function AuthProvider({ children }) {
     isAuthenticated: Boolean(user),
     login,
     logout,
+    updateProfile,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

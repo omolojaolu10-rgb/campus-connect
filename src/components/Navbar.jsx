@@ -46,6 +46,9 @@ function Navbar() {
         </NavLink>
         {user ? (
           <>
+            <NavLink to="/profile" onClick={closeMenu}>
+              Profile
+            </NavLink>
             <span className="nav-user-name">
               {user.name.split(' ')[0]}
             </span>

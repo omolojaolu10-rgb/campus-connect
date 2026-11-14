@@ -4,7 +4,7 @@
  *  - student: { id, name, department, courses[], interests[], connected }
  *  - onToggleConnect(studentId): called when the button is clicked
  */
-function StudentCard({ student, onToggleConnect }) {
+function StudentCard({ student, onToggleConnect, showConnectButton = true }) {
   const { id, name, department, courses, interests, connected } = student
 
   return (
@@ -24,15 +24,17 @@ function StudentCard({ student, onToggleConnect }) {
         <p>{interests.join(' · ')}</p>
       </div>
 
-      <button
-        type="button"
-        className={connected ? 'connected-btn' : 'connect-btn'}
-        aria-pressed={connected}
-        aria-label={`${connected ? 'Disconnect from' : 'Connect with'} ${name}`}
-        onClick={() => onToggleConnect(id)}
-      >
-        {connected ? 'Connected ✓' : 'Connect'}
-      </button>
+      {showConnectButton && (
+        <button
+          type="button"
+          className={connected ? 'connected-btn' : 'connect-btn'}
+          aria-pressed={connected}
+          aria-label={`${connected ? 'Disconnect from' : 'Connect with'} ${name}`}
+          onClick={() => onToggleConnect(id)}
+        >
+          {connected ? 'Connected ✓' : 'Connect'}
+        </button>
+      )}
     </article>
   )
 }
