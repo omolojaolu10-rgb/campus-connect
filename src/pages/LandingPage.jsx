@@ -1,11 +1,10 @@
 import Hero from '../components/Hero'
+import usePageTitle from '../hooks/usePageTitle'
 
 function LandingPage() {
-  return (
-    <main>
-      <Hero />
-    </main>
-  )
+  usePageTitle('Home')
+
+  return <Hero />
 }
 
 export default LandingPage

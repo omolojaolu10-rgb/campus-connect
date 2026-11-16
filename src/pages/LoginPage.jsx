@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import FormInput from '../components/FormInput'
 import useAuth from '../hooks/useAuth'
+import usePageTitle from '../hooks/usePageTitle'
 import { validateEmail } from '../utils/validators'
 
 function LoginPage() {
@@ -14,6 +15,7 @@ function LoginPage() {
   const location = useLocation()
   const navigate = useNavigate()
   const destination = location.state?.from || '/discover'
+  usePageTitle('Log in')
 
   if (user) {
     return <Navigate to={destination} replace />
@@ -72,7 +74,7 @@ function LoginPage() {
   }
 
   return (
-    <main className="registration-page">
+    <div className="registration-page">
       <section className="registration-card" aria-labelledby="login-title">
         <div className="registration-heading">
           <p className="tagline">WELCOME BACK</p>
@@ -125,7 +127,7 @@ function LoginPage() {
           Don’t have an account? <Link to="/register">Register</Link>
         </p>
       </section>
-    </main>
+    </div>
   )
 }
 

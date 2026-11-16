@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ProfileForm from '../components/ProfileForm'
 import StudentCard from '../components/StudentCard'
 import useAuth from '../hooks/useAuth'
+import usePageTitle from '../hooks/usePageTitle'
 
 function ProfilePage() {
   const { user } = useAuth()
@@ -13,6 +14,7 @@ function ProfilePage() {
     skills: [...user.profile.skills],
     interests: [...user.profile.interests],
   }))
+  usePageTitle('Profile')
 
   function handleChange(name, value) {
     setValues((previous) => ({ ...previous, [name]: value }))
@@ -28,7 +30,7 @@ function ProfilePage() {
   }
 
   return (
-    <main className="profile-page">
+    <div className="profile-page">
       <div className="profile-page-heading">
         <p className="tagline">YOUR CAMPUS PROFILE</p>
         <h1>Edit your academic profile</h1>
@@ -49,7 +51,7 @@ function ProfilePage() {
           <StudentCard student={previewStudent} showConnectButton={false} />
         </section>
       </div>
-    </main>
+    </div>
   )
 }
 

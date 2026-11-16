@@ -1,4 +1,36 @@
 
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  width: 100%;
+}
+
+.skip-link {
+  position: absolute;
+  left: 0;
+  top: -999px;
+  z-index: 100;
+  width: auto;
+  padding: 12px 16px;
+  border-radius: 0 0 8px 0;
+  background: var(--purple-600);
+  color: #fff;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+.site-header {
+  width: 100%;
+}
+
 .navbar {
   position: relative;
   z-index: 1;
@@ -26,6 +58,15 @@
   gap: 24px;
 }
 
+.nav-links a,
+.nav-links button,
+.nav-links .btn-outline {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .nav-links a.active {
   color: var(--purple-600);
   font-weight: 700;
@@ -40,6 +81,8 @@
 
 .menu-toggle {
   display: none;
+  min-width: 44px;
+  min-height: 44px;
   padding: 4px 8px;
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -107,7 +150,8 @@
 }
 
 .form-field input,
-.form-field select {
+.form-field select,
+.form-field textarea {
   width: 100%;
   min-width: 0;
   min-height: 44px;
@@ -120,7 +164,8 @@
 }
 
 .form-field input[aria-invalid='true'],
-.form-field select[aria-invalid='true'] {
+.form-field select[aria-invalid='true'],
+.form-field textarea[aria-invalid='true'] {
   border-color: #b42318;
 }
 
@@ -131,7 +176,8 @@
 
 .password-toggle {
   justify-self: start;
-  padding: 0;
+  min-height: 44px;
+  padding: 0 8px;
   border: 0;
   background: transparent;
   color: var(--purple-700);
@@ -317,6 +363,7 @@
 
 .tag-add-button {
   min-width: 56px;
+  min-height: 44px;
   padding: 8px 12px;
   border: 1px solid var(--purple-600);
   border-radius: 8px;
@@ -351,8 +398,8 @@
 .profile-tag button {
   display: inline-grid;
   flex: 0 0 auto;
-  width: 24px;
-  height: 24px;
+  width: 44px;
+  height: 44px;
   place-items: center;
   border: 0;
   border-radius: 50%;
@@ -400,7 +447,7 @@
 
 .student-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 25px;
 }
 
@@ -463,6 +510,7 @@
 .connect-btn,
 .connected-btn {
   width: 100%;
+  min-height: 44px;
   padding: 12px;
   border: none;
   border-radius: 8px;
@@ -477,12 +525,12 @@
 
 .connected-btn {
   background: #e7f7ed;
-  color: #218348;
+  color: #1d6f3d;
 }
 
 @media (max-width: 900px) {
   .student-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .profile-page {

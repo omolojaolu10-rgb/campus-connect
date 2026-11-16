@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import FormInput from '../components/FormInput'
 import { DEPARTMENTS, LEVELS } from '../config/appConfig'
+import usePageTitle from '../hooks/usePageTitle'
 import {
   validateConfirmPassword,
   validateDepartment,
@@ -59,6 +60,7 @@ function RegisterPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showPasswords, setShowPasswords] = useState(false)
   const [isSuccessful, setIsSuccessful] = useState(false)
+  usePageTitle('Create account')
 
   function handleChange(name, value) {
     const updatedValues = { ...values, [name]: value }
@@ -110,7 +112,7 @@ function RegisterPage() {
   }
 
   return (
-    <main className="registration-page">
+    <div className="registration-page">
       <section className="registration-card" aria-labelledby="register-title">
         <div className="registration-heading">
           <p className="tagline">JOIN YOUR CAMPUS COMMUNITY</p>
@@ -229,7 +231,7 @@ function RegisterPage() {
           Already have an account? <Link to="/login">Log in</Link>
         </p>
       </section>
-    </main>
+    </div>
   )
 }
 

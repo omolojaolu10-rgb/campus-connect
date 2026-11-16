@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import StudentList from '../components/StudentList'
 import { sampleStudents } from '../data/sampleStudents'
+import usePageTitle from '../hooks/usePageTitle'
 
 function DiscoverPage() {
   const [students, setStudents] = useState(sampleStudents)
+  usePageTitle('Discover Students')
 
   function handleToggleConnect(studentId) {
     setStudents((previous) =>
@@ -16,22 +18,20 @@ function DiscoverPage() {
   }
 
   return (
-    <main>
-      <section className="discover">
-        <div className="section-heading">
-          <p className="tagline">MAKE NEW CONNECTIONS</p>
-          <h2>Discover Students</h2>
-          <p>
-            Find people who share your courses, interests and academic goals.
-          </p>
-        </div>
+    <section className="discover">
+      <div className="section-heading">
+        <p className="tagline">MAKE NEW CONNECTIONS</p>
+        <h1>Discover Students</h1>
+        <p>
+          Find people who share your courses, interests and academic goals.
+        </p>
+      </div>
 
-        <StudentList
-          students={students}
-          onToggleConnect={handleToggleConnect}
-        />
-      </section>
-    </main>
+      <StudentList
+        students={students}
+        onToggleConnect={handleToggleConnect}
+      />
+    </section>
   )
 }
 
